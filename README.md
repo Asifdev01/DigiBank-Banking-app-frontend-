@@ -1,50 +1,59 @@
-# Welcome to your Expo app 👋
+DigiBank
+----------------------------------------------------
+DigiBank is a modern mobile banking application built with React Native. It provides a clean and intuitive interface for managing finances, including sending and receiving money, tracking transactions, and making quick payments.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Features
+----------------------------------------------------
+Send Money
+Transfer money securely to other users.
+Receive Money
+Accept payments directly into your account.
+Transfer Between Accounts
+Move funds across linked bank accounts.
+Check Balance and Transactions
+View account balance and monitor recent transactions.
+Scan QR and Pay
+Make fast payments using QR code scanning.
+Latest Transactions
+Access a clear and organized view of recent activity.
+Modern Fintech UI
+Clean, minimal, and user-friendly interface inspired by modern banking apps.
 
-## Get started
+Tech Stack
+----------------------------------------------------
+Frontend: React Native (Expo)
+Language: JavaScript / TypeScript
+UI: Custom components and modern design principles
 
-1. Install dependencies
+Screens
+----------------------------------------------------
+Home Dashboard
+Transaction List
+Send and Receive Money
+QR Scanner and Payment
+Account Overview
 
-   ```bash
-   npm install
-   ```
+Installation
+----------------------------------------------------
+git clone https://github.com/yourusername/digibank-app.git
+cd digibank-app
+npm install
+npx expo start
 
-2. Start the app
+Future Improvements
+----------------------------------------------------
+User authentication (OTP, biometrics)
+Spending analytics and insights
+Notifications for transactions
+Card management
+Backend integration with database
 
-   ```bash
-   npx expo start
-   ```
+Contributing
+----------------------------------------------------
+Contributions are welcome. Fork the repository and submit a pull request.
 
-In the output, you'll find options to open the app in a
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Author
+----------------------------------------------------
+Asif Ansari
