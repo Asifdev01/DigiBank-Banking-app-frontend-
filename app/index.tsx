@@ -1,4 +1,5 @@
 import LatestTransaction from "@/components/latestTransaction";
+import Navbar from "@/components/navbar";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import BalanceCard from "../components/balanceCard";
@@ -27,7 +28,13 @@ export default function Index() {
         amount="- ₹500"
         time="3 mins ago"
       />
-      <LatestTransaction style={styles.latestTransaction} />
+      <LatestTransaction
+        style={styles.latestTransaction}
+        name="YouTube Premium"
+        amount="- ₹189"
+        time="Yesterday"
+      />
+      <Navbar style={styles.navbar} />
 
 
 
@@ -39,9 +46,10 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 60, // Moving header to top with some padding
+    paddingTop: 60,
     paddingHorizontal: 20,
     alignItems: "center",
+    paddingBottom: 150, // Account for the sticky navbar and floating space
   },
   header: {
     width: "100%",
@@ -86,5 +94,9 @@ const styles = StyleSheet.create({
   latestTransaction: {
     width: "100%",
     marginTop: 0,
+  },
+  navbar: {
+    position: "absolute",
+    bottom: 50,
   },
 });

@@ -1,8 +1,10 @@
 import { Ionicons } from '@expo/vector-icons'
+import { useRouter } from 'expo-router'
 import React, { useState } from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity, View, ViewStyle } from 'react-native'
 
 const BalanceCard = ({ style }: { style?: ViewStyle }) => {
+    const router = useRouter()
     const [isVisible, setIsVisible] = useState(true)
 
     return (
@@ -32,7 +34,11 @@ const BalanceCard = ({ style }: { style?: ViewStyle }) => {
             </View>
 
             <View style={styles.actionRow}>
-                <TouchableOpacity style={styles.actionButton} activeOpacity={0.7}>
+                <TouchableOpacity 
+                    style={styles.actionButton} 
+                    activeOpacity={0.7}
+                    onPress={() => router.push("/screens/payment")}
+                >
                     <Image source={require("../assets/images/send-icon.png")} style={styles.actionIcon} />
                     <Text style={styles.actionText}>Pay</Text>
                 </TouchableOpacity>
@@ -56,7 +62,7 @@ export default BalanceCard
 const styles = StyleSheet.create({
     balanceContainer: {
         width: "100%",
-        height: "31%",
+        height: "35%",
         backgroundColor: "#ffffffff",
         borderRadius: 30,
         overflow: "hidden",
@@ -69,7 +75,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         width: "100%",
-        height: "60%",
+        height: "70%",
         borderRadius: 30,
         backgroundColor: "#fdff7f",
         padding: 20,
