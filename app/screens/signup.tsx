@@ -12,17 +12,19 @@ import {
     TouchableOpacity,
     View,
 } from 'react-native';
-import { AUTH_URL } from '../components/config/api';
+import { AUTH_URL } from '../../components/config/api';
 
-const Login = () => {
+const Signup = () => {
     const router = useRouter();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
 
-    const handleLogin = () => {
-        // Instant access for now as requested
-        router.replace("/dashboard");
+    const handleSignup = () => {
+        // Placeholder for real signup logic
+        router.replace("/");
     };
 
     return (
@@ -37,25 +39,35 @@ const Login = () => {
                 <View style={styles.content}>
                     <View style={styles.illustrationContainer}>
                         <Image
-                            source={require("../assets/images/app-icon.png")}
+                            source={require("../../assets/images/app-icon.png")}
                             style={styles.illustration}
                             resizeMode="contain"
                         />
                     </View>
 
                     <View style={styles.card}>
-                        <Text style={styles.titleText}>Sign In</Text>
-                        <Text style={styles.subtitleText}>Enter valid user name & password to continue</Text>
+                        <Text style={styles.titleText}>Sign Up</Text>
+                        <Text style={styles.subtitleText}>Use proper information to continue</Text>
 
                         <View style={styles.inputWrapper}>
                             <View style={styles.inputContainer}>
                                 <Ionicons name="person-outline" size={20} color="#999" />
                                 <TextInput
-                                    placeholder="User name"
+                                    placeholder="Full name"
                                     placeholderTextColor="#999"
                                     style={styles.input}
                                     value={username}
                                     onChangeText={setUsername}
+                                />
+                            </View>
+
+                            <View style={styles.inputContainer}>
+                                <Ionicons name="mail-outline" size={20} color="#999" />
+                                <TextInput
+                                    placeholder="Email address"
+                                    placeholderTextColor="#999"
+                                    style={styles.input}
+                                    keyboardType="email-address"
                                 />
                             </View>
 
@@ -74,23 +86,30 @@ const Login = () => {
                                 </TouchableOpacity>
                             </View>
 
-                            <TouchableOpacity style={styles.forgotButton}>
-                                <Text style={styles.forgotText}>Forget password</Text>
-                            </TouchableOpacity>
+                            <View style={styles.termsRow}>
+                                <Text style={styles.termsText}>By signing up, you are agree to our </Text>
+                                <TouchableOpacity>
+                                    <Text style={styles.linkText}>Terms & Conditions</Text>
+                                </TouchableOpacity>
+                                <Text style={styles.termsText}> and </Text>
+                                <TouchableOpacity>
+                                    <Text style={styles.linkText}>Privacy Policy</Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
 
                         <TouchableOpacity
-                            style={styles.loginButton}
+                            style={styles.signupButton}
                             activeOpacity={0.8}
-                            onPress={handleLogin}
+                            onPress={handleSignup}
                         >
-                            <Text style={styles.loginButtonText}>Login</Text>
+                            <Text style={styles.signupButtonText}>Create Account</Text>
                         </TouchableOpacity>
 
                         <View style={styles.footer}>
-                            <Text style={styles.footerText}>Haven't any account? </Text>
-                            <TouchableOpacity onPress={() => router.push("/screens/signup")}>
-                                <Text style={styles.signupText}>Sign up</Text>
+                            <Text style={styles.footerText}>Already have an Account? </Text>
+                            <TouchableOpacity onPress={() => router.push("/")}>
+                                <Text style={styles.loginText}>Sign in</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -100,7 +119,7 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Signup;
 
 const styles = StyleSheet.create({
     container: {
@@ -114,13 +133,13 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
     illustrationContainer: {
-        height: '35%',
+        height: '30%',
         justifyContent: 'center',
         alignItems: 'center',
     },
     illustration: {
-        width: '60%',
-        height: '60%',
+        width: '50%',
+        height: '50%',
     },
     card: {
         backgroundColor: '#fff',
@@ -129,7 +148,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
         paddingTop: 40,
         paddingBottom: 40,
-        minHeight: '65%',
+        minHeight: '70%',
     },
     titleText: {
         fontSize: 28,
@@ -166,16 +185,24 @@ const styles = StyleSheet.create({
         fontFamily: 'Poppins',
         color: '#1a1a1a',
     },
-    forgotButton: {
-        alignSelf: 'flex-end',
+    termsRow: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        marginTop: 10,
     },
-    forgotText: {
-        fontSize: 13,
+    termsText: {
+        fontSize: 12,
         fontFamily: 'Poppins',
-        fontWeight: '600',
+        color: '#999',
+    },
+    linkText: {
+        fontSize: 12,
+        fontFamily: 'Poppins',
+        fontWeight: '700',
         color: '#007AFF',
     },
-    loginButton: {
+    signupButton: {
         backgroundColor: '#007AFF',
         borderRadius: 15,
         paddingVertical: 18,
@@ -187,7 +214,7 @@ const styles = StyleSheet.create({
         shadowRadius: 10,
         elevation: 5,
     },
-    loginButtonText: {
+    signupButtonText: {
         color: '#fff',
         fontSize: 18,
         fontFamily: 'Poppins',
@@ -203,7 +230,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Poppins',
         color: '#666',
     },
-    signupText: {
+    loginText: {
         fontSize: 14,
         fontFamily: 'Poppins',
         fontWeight: '700',

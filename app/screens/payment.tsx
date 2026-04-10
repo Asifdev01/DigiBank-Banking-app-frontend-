@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useRouter } from 'expo-router';
+import { useRouter, useLocalSearchParams } from 'expo-router';
 import React, { useState } from 'react';
 import {
     Dimensions,
@@ -19,6 +19,7 @@ const BOTTOM_INSET = Platform.OS === 'ios' ? 34 : 24;
 
 export default function Payment() {
     const router = useRouter();
+    const { name, account, avatar } = useLocalSearchParams();
     const [amount, setAmount] = useState('0');
 
     const handleKeyPress = (key: string) => {
@@ -49,9 +50,9 @@ export default function Payment() {
 
     return (
         <LinearGradient
-            colors={['#dfe9e6', '#b8d9c2']}
+            colors={["#dee8e6ff", "#B1D4BB"]}
             start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
+            end={{ x: 1, y: 0 }}
             style={styles.screen}
         >
             <View style={styles.topBar}>
@@ -82,14 +83,14 @@ export default function Payment() {
 
                 <View style={styles.recipientRow}>
                     <Image
-                        source={require('../../assets/images/user.png')}
+                        source={avatar ? { uri: avatar as string } : require('../../assets/images/user.png')}
                         style={styles.avatar}
                     />
                     <View style={styles.recipientInfo}>
-                        <Text style={styles.recipientName}>Ashutosh Pathy</Text>
-                        <Text style={styles.recipientAcct}>1111 *** **** 1720</Text>
+                        <Text style={styles.recipientName}>{name || 'Ashutosh Pathy'}</Text>
+                        <Text style={styles.recipientAcct}>{account || '1111 *** **** 1720'}</Text>
                     </View>
-                    <TouchableOpacity activeOpacity={0.7}>
+                    <TouchableOpacity activeOpacity={0.7} onPress={() => router.push('/screens/contacts')}>
                         <Text style={styles.changeLink}>Change</Text>
                     </TouchableOpacity>
                 </View>
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 28,
         paddingHorizontal: 20,
         paddingTop: 20,
-        paddingBottom: BOTTOM_INSET,
+        paddingBottom: 40,
         shadowColor: 'rgba(0, 0, 0, 0.02)',
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 1,

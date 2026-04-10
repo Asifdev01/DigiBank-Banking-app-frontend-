@@ -3,7 +3,15 @@ import { useRouter } from 'expo-router'
 import React, { useState } from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity, View, ViewStyle } from 'react-native'
 
-const BalanceCard = ({ style }: { style?: ViewStyle }) => {
+const BalanceCard = ({
+    style,
+    balance,
+    income
+}: {
+    style?: ViewStyle,
+    balance: number,
+    income: number
+}) => {
     const router = useRouter()
     const [isVisible, setIsVisible] = useState(true)
 
@@ -24,20 +32,18 @@ const BalanceCard = ({ style }: { style?: ViewStyle }) => {
                     </TouchableOpacity>
                 </View>
                 <Text style={styles.balance}>
-                    {isVisible ? "₹12,192.07" : "₹ ••••••••"}
+                    {isVisible ? `₹${balance}` : "₹ ••••••••"}
                 </Text>
                 {isVisible && (
-                    <Text style={styles.recentTransactions}>
-                        + ₹2,000.00
-                    </Text>
+                    <Text style={styles.recentTransactions}>+ ₹{income}</Text>
                 )}
             </View>
 
             <View style={styles.actionRow}>
-                <TouchableOpacity 
-                    style={styles.actionButton} 
+                <TouchableOpacity
+                    style={styles.actionButton}
                     activeOpacity={0.7}
-                    onPress={() => router.push("/screens/payment")}
+                    onPress={() => router.push("/screens/contacts")}
                 >
                     <Image source={require("../assets/images/send-icon.png")} style={styles.actionIcon} />
                     <Text style={styles.actionText}>Pay</Text>
